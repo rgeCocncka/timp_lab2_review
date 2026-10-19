@@ -13,8 +13,9 @@ class Program
         Check("T03", () => string.Join(",", Run(new[] { false, false }, new[] { false, true })), "");
         Check("T04", () => string.Join(",", Run(Array.Empty<bool>(), Array.Empty<bool>())), "");
         Check("T05", () => ((Func<object>)(() => { bool[] s = { false, true }; Run(new[] { true, false }, s); return s[0]; }))(), "False");
-        Check("T06", () => string.Join(",", Run(new[] { true, false, true }, new[] { false, true, false })), "0,2");
-        Check("T07", () => ((Func<object>)(() => { bool[] s = { false, true }; Run(s, new[] { true, true }); return s[1]; }))(), "True");
+        Check("U01", () => string.Join(",", Run(new[] { true, false, true }, new[] { false, true, false })), "0,2");
+        Check("U02", () => ((Func<object>)(() => { bool[] s = { false, true }; Run(s, new[] { true, true }); return s[1]; }))(), "True");
+        Check("U03", () => string.Join(",", Run(new[] { true, true, true }, new[] { true, true, true })), "");
         Console.WriteLine("Failed: " + failed);
         Environment.ExitCode = failed == 0 ? 0 : 1;
     }
